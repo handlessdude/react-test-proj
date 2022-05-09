@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+.users-list--pagination{
+  display: flex;
+
+}
+.users-list--pagination-btn:hover{
+  cursor: pointer;
+}
+.users-list--pagination-btn{
+  border-radius: 50px;
+  margin: 0.5rem;
+
+}

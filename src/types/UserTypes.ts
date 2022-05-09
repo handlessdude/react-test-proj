@@ -6,15 +6,20 @@ export interface IUser {
     avatar: string;
 }
 
-export interface IUsers {
+export interface IUsersState {
     users: IUser[];
     loading: boolean;
     error: null | string;
+    page: number;
+    per_page: number;
+    total_pages: number;
 }
+
 export enum UsersActionTypes {
     USERS_FETCH= "FETCH_USERS",
     USERS_FETCH_SUCCESS = "FETCH_USERS_SUCCESS",
     USERS_FETCH_ERROR = "FETCH_USERS_ERROR",
+    USERS_SET_PAGE = "SET_USERS_PAGE",
 }
 
 /*interfaces for _users_reducer_*/
@@ -23,10 +28,20 @@ interface IUsersFetchAction {
 }
 interface IUsersFetchSuccessAction {
     type: UsersActionTypes.USERS_FETCH_SUCCESS;
-    payload: IUser[]
+    payload: {
+        users: IUser[],
+        per_page: number,
+        total_pages: number,
+    }
+
 }
 interface IUsersFetchErrorAction {
     type: UsersActionTypes.USERS_FETCH_ERROR;
     payload: string;
 }
-export type IUsersAction = IUsersFetchAction | IUsersFetchSuccessAction | IUsersFetchErrorAction;
+interface IUsersSetPageAction {
+    type: UsersActionTypes.USERS_SET_PAGE;
+    payload: number;
+}
+
+export type IUsersAction = IUsersFetchAction | IUsersFetchSuccessAction | IUsersFetchErrorAction | IUsersSetPageAction;
