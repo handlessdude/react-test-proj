@@ -1,56 +1,48 @@
-import React, {useEffect} from 'react';
-import {useTypedSelector} from "hooks/useTypedSelector";
-import {useActions} from "hooks/useActions";
+import React from 'react';
 import UserItem from "components/users/UserItem";
 import 'styles/UserStyles.css';
+import { IUsersProps} from "types/UserTypes";
 
-const UserList: React.FC = () => {
-    const { users, loading, error, page, per_page, total_pages } = useTypedSelector(state => state.userReducer)
-    const pages = Array.from({length: total_pages},(v,k)=> k+1)
+const UserList: React.FC<IUsersProps> = (props) => {
 
-    const {fetchUsers, setUsersPage} = useActions()
+    const pages = Array.from({length: props.usersState.total_pages},(v,k)=> k+1)
 
-    useEffect(() => {
-        fetchUsers(page, per_page)
-        //console.log(`effect worked! users = ${users} | loading = ${loading} | error = ${error}`)
-    }, [page])
-
-    if(loading) {
+    if(props.usersState.loading) {
         return <h1>Загрузка...</h1>
     }
 
-    if(error) {
-        return <h1>{error}</h1>
+    if(props.usersState.error) {
+        return <h1>{props.usersState.error}</h1>
     }
 
-    const userItems = users.map(user => <UserItem user={user} key={user.id}/>)
+    const userItems = props.usersState.users.map(user => <UserItem user={user} key={user.id}/>)
 
     return (
         <div className="users-list">
             {userItems}
             <div className="users-list--pagination">
                 <button className="goNext hoverable"
-                     onClick={()=>setUsersPage(page-1)}
-                     disabled={page===pages[0]}>&#10094;</button>
+                        onClick={()=>props.setUsersPage(props.usersState.page-1)}
+                        disabled={props.usersState.page===pages[0]}>&#10094;
+                </button>
+
                 {pages.map(p =>
                     <button
-                        onClick={() => setUsersPage(p)}
+                        onClick={() => props.setUsersPage(p)}
                         key={p}
-                        className={`btn hoverable ${p === page ? 'active': ''}`}
+                        className={`btn hoverable ${p === props.usersState.page ? 'active': ''}`}
                     >
                         {p}
                     </button>
                 )}
 
                 <button className="goNext hoverable"
-                onClick={()=>setUsersPage(page+1)}
-                disabled={page===pages[pages.length-1]}>&#10095;</button>
+                        onClick={()=>props.setUsersPage(props.usersState.page+1)}
+                        disabled={props.usersState.page===pages[pages.length-1]}>&#10095;
+                </button>
             </div>
         </div>
     );
-
-
-
 };
 
 export default UserList;

@@ -1,6 +1,7 @@
 import React from 'react';
-import {IUserItemProps} from "types/UserTypes";
+import {IUserProps} from "types/UserTypes";
 import 'styles/UserStyles.css';
+import {Link} from "react-router-dom";
 
 /*
 * {"id":1,
@@ -10,16 +11,23 @@ import 'styles/UserStyles.css';
 * "avatar":"https://reqres.in/img/faces/1-image.jpg"}
 * */
 
-const UserItem: React.FC<IUserItemProps> = (props) => {
+const UserItem: React.FC<IUserProps> = (props) => {
     return (
-        <div className="user-item card hoverable">
+        <Link to={`/users/${props.user.id}`} className="user-item card hoverable">
+            {/*<div className="user-item card hoverable">
+                <img src={props.user.avatar} className="user-item--avatar" alt="user-avatar"/>
+                <section className="user-item--info">
+                    {`${props.user.first_name} ${props.user.last_name}`}
+                    <hr style={{margin: '10px 0 10px',height : '1px', borderWidth: "0", color: '#ccc', backgroundColor:"#ccc", width: '100%'}}/>
+                </section>
+            </div>*/}
             <img src={props.user.avatar} className="user-item--avatar" alt="user-avatar"/>
             <section className="user-item--info">
                 {`${props.user.first_name} ${props.user.last_name}`}
                 <hr style={{margin: '10px 0 10px',height : '1px', borderWidth: "0", color: '#ccc', backgroundColor:"#ccc", width: '100%'}}/>
             </section>
+        </Link>
 
-        </div>
     );
 };
 

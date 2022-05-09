@@ -1,5 +1,4 @@
 import React from 'react';
-import 'styles/App.css';
 import {Route, Routes} from "react-router-dom";
 import Homepage from "pages/Homepage";
 import UsersPage from "pages/UserPages/UsersPage";
@@ -14,7 +13,7 @@ function App() {
               <Route path="/" element={<Layout/>}>
                   <Route index element={<Homepage/>}/>
                   <Route path="/users" element={<UsersPage/>}/>
-                  <Route path="/users/:id" element={<UserPage/>}/>
+                  <Route path="/users/:userId" element={<UserPage/>}/>
                   <Route path="/*" element={<NotFoundPage/>}/>
               </Route>
           </Routes>

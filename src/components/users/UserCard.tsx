@@ -1,8 +1,8 @@
 import React from 'react';
 import 'styles/UserStyles.css';
-import {IUserItemProps} from "types/UserTypes";
+import {IUserProps} from "types/UserTypes";
 
-const UserCard: React.FC<IUserItemProps> = (props) => {
+const UserCard: React.FC<IUserProps> = (props) => {
     return (
         <div className="user-card card">
             <img src={props.user.avatar} className="user-item--avatar" alt="user-avatar"/>
