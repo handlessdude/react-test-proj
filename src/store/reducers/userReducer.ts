@@ -1,15 +1,15 @@
-import {IUsers, UsersActionTypes, IUsersAction} from "types/UserTypes"
+import {IUsers, IUser, UsersActionTypes, IUsersAction} from "types/UserTypes"
 
 const initialState: IUsers = {
-    users: [],
+    users: [] as IUser[],
     loading: false,
     error: null,
 }
 
-export const usersReducer = (state = initialState, action: IUsersAction): IUsers => {
+export const userReducer = (state = initialState, action: IUsersAction): IUsers => {
     switch (action.type) {
         case UsersActionTypes.USERS_FETCH:
-            return { users: [],
+            return { users: [] as IUser[],
                 loading: true,
                 error: null,
                 }

@@ -1,5 +1,13 @@
+export interface IUser {
+    id: number;
+    email: string;
+    first_name: string;
+    last_name: string;
+    avatar: string;
+}
+
 export interface IUsers {
-    users: object[];
+    users: IUser[];
     loading: boolean;
     error: null | string;
 }
@@ -15,7 +23,7 @@ interface IUsersFetchAction {
 }
 interface IUsersFetchSuccessAction {
     type: UsersActionTypes.USERS_FETCH_SUCCESS;
-    payload: any[]
+    payload: IUser[]
 }
 interface IUsersFetchErrorAction {
     type: UsersActionTypes.USERS_FETCH_ERROR;
