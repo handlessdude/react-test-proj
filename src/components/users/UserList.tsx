@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useTypedSelector} from "hooks/useTypedSelector";
 import {useActions} from "hooks/useActions";
 import UserItem from "components/users/UserItem";
+import 'styles/UserStyles.css';
 
 const UserList: React.FC = () => {
     const { users, loading, error, page, per_page, total_pages } = useTypedSelector(state => state.userReducer)
@@ -28,16 +29,22 @@ const UserList: React.FC = () => {
         <div className="users-list">
             {userItems}
             <div className="users-list--pagination">
+                <button className="goNext hoverable"
+                     onClick={()=>setUsersPage(page-1)}
+                     disabled={page===pages[0]}>&#10094;</button>
                 {pages.map(p =>
-                    <div
+                    <button
                         onClick={() => setUsersPage(p)}
                         key={p}
-                        className="users-list--pagination-btn"
-                        style={{border:p === page ? '2px solid green' : '1px solid gray', padding: 10}}
+                        className={`btn hoverable ${p === page ? 'active': ''}`}
                     >
                         {p}
-                    </div>
+                    </button>
                 )}
+
+                <button className="goNext hoverable"
+                onClick={()=>setUsersPage(page+1)}
+                disabled={page===pages[pages.length-1]}>&#10095;</button>
             </div>
         </div>
     );

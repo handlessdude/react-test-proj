@@ -6,6 +6,10 @@ export interface IUser {
     avatar: string;
 }
 
+export interface IUserItemProps {
+    user: IUser
+}
+
 export interface IUsersState {
     users: IUser[];
     loading: boolean;

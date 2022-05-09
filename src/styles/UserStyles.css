@@ -1,0 +1,53 @@
+:root {
+  --avatar-size: 150px;
+  --avatar-border-size: 1rem;
+  --avatar-thumbnail-size: 100px;
+  --avatar-micro-thumbnail-size: 50px;
+  --photo-size: 250px;
+}
+
+
+.users-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.user-item{
+  display: flex;
+  width: 100%;
+  min-width: 420px;
+}
+.card {
+  border-radius: var(--round-borders-radius);
+  background: var(--white);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.user-item--avatar{
+  border-radius: var(--round-borders-radius);
+}
+.user-item--info{
+  margin-left: 1.5rem;
+}
+section {
+  width: 100%;
+}
+.users-list--pagination>button{
+  padding: 0.8rem;
+  border: none;
+}
+.users-list--pagination>button:not(.goNext){
+  background: var(--white);
+}
+.users-list--pagination>button.active {
+  color: var(--white);
+  background: #672280;
+}
+.users-list--pagination>button:disabled {
+  cursor: default;
+  opacity: 1!important;
+  background: #eee!important;
+  border-color: #ddd!important;
+  color: #999!important;
+}

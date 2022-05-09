@@ -1,14 +1,24 @@
 import React from 'react';
-import UserList from "components/users/UserList";
-
 import 'styles/App.css';
+import {Route, Routes} from "react-router-dom";
+import Homepage from "pages/Homepage";
+import UsersPage from "pages/UserPages/UsersPage";
+import UserPage from "pages/UserPages/UserPage";
+import NotFoundPage from "pages/NotFoundPage";
+import Layout from "components/Layout";
 
 function App() {
-
   return (
-    <div className="App">
-      <UserList/>
-    </div>
+      <>
+          <Routes>
+              <Route path="/" element={<Layout/>}>
+                  <Route index element={<Homepage/>}/>
+                  <Route path="/users" element={<UsersPage/>}/>
+                  <Route path="/users/:id" element={<UserPage/>}/>
+                  <Route path="/*" element={<NotFoundPage/>}/>
+              </Route>
+          </Routes>
+      </>
   );
 }
 
