@@ -2,7 +2,7 @@ import React from 'react';
 
 const Homepage: React.FC = () => {
     return (
-        <div className="card">
+        <div className="greetings card">
             <h1>hello world.</h1>
         </div>
     );

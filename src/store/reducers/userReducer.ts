@@ -1,4 +1,4 @@
-import {IUser, IUserState,  UserActionTypes, IUserAction} from "types/UserTypes"
+import { IUserState,  UserActionTypes, IUserAction} from "types/UserTypes"
 
 const initialState: IUserState = {
     user: {
@@ -7,7 +7,7 @@ const initialState: IUserState = {
         first_name: "",
         last_name:  "",
         avatar: "",
-    } as IUser,
+    },
     loading: true,
     error: null,
 }

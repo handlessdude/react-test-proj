@@ -60,17 +60,26 @@ body {
   font-weight: 500;
   color: var(--white);
   margin: 1rem;
+  text-decoration: none;
 }
 
 .header--links > a:hover {
   color: var(--gray);
 }
+.header--links > a.active{
+  color: var(--active-link);
 
+}
+.greetings{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .card {
   border-radius: var(--round-borders-radius);
   background: var(--white);
   padding: 1.5rem;
-  margin-bottom: 2rem;
 }
 
 section {
@@ -85,13 +94,8 @@ main {
   align-items: center;
 }
 
-
 .hoverable:hover{
   cursor: pointer;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 .users-list--pagination{
@@ -102,19 +106,4 @@ main {
 .btn{
   border-radius: 50px;
   margin: 0.5rem;
-}
-/*====== a =======*/
-
-a:link {
-  color: var(--darkest-gray);
-}
-
-/* visited link */
-a:visited {
-  color: inherit;
-}
-
-/* mouse over link */
-a:hover {
-  color: var(--light-gray);
 }

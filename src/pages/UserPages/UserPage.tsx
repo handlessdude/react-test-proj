@@ -16,12 +16,21 @@ const UserPage: React.FC = () => {
 
     useEffect(() => {
         fetchUser(Number(userId))
+        console.log(userState.user, userState.loading, userState.error)
     }, [])
 
 
+    if(userState.loading) {
+        return <h3>Загрузка...</h3>
+    }
+
+    if(userState.error) {
+        return <h3>{userState.error}</h3>
+    }
+
     return (
         <>
-            <UserCard userState={ userState }/>
+            {userState.user && <UserCard user={ userState.user }/>}
         </>
     );
 };
