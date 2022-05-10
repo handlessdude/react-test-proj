@@ -19,9 +19,50 @@ export interface IUserState {
 }
 
 export interface IUserProps {
-    user: IUser
+    user: IUser,
 }
 
+export interface IUserStateProps {
+    userState: IUserState,
+}
+export enum UserActionTypes {
+    USER_FETCH= "FETCH_USERS",
+    USER_FETCH_SUCCESS = "FETCH_USERS_SUCCESS",
+    USER_FETCH_ERROR = "FETCH_USERS_ERROR",
+}
+/**
+ * Fetch User action type
+ * */
+interface IUserFetchAction {
+    type: UserActionTypes.USER_FETCH;
+}
+/**
+ * Successful User fetch action type
+ * */
+interface IUserFetchSuccessAction {
+    type: UserActionTypes.USER_FETCH_SUCCESS;
+    payload: {
+        user: IUser,
+    }
+}
+/**
+ * Erroneous User fetch action type
+ * */
+interface IUserFetchErrorAction {
+    type: UserActionTypes.USER_FETCH_ERROR;
+    payload: string;
+}
+
+/**
+ * Declares User action type
+ * */
+export type IUserAction =
+    | IUserFetchAction
+    | IUserFetchSuccessAction
+    | IUserFetchErrorAction;
+
+
+/* === USERS ===*/
 /**
  * Declares state of User List fetching
  * */
@@ -43,7 +84,7 @@ export interface IUsersProps {
 }
 
 /**
- * Types of actions for User fetching
+ * Types of actions for Users fetching
  * */
 export enum UsersActionTypes {
     USERS_FETCH= "FETCH_USERS",
@@ -53,14 +94,13 @@ export enum UsersActionTypes {
 }
 
 /**
- * Fetch User action type
+ * Fetch Users action type
  * */
 interface IUsersFetchAction {
     type: UsersActionTypes.USERS_FETCH;
 }
-
 /**
- * Successful User fetch action type
+ * Successful Users fetch action type
  * */
 interface IUsersFetchSuccessAction {
     type: UsersActionTypes.USERS_FETCH_SUCCESS;
@@ -70,9 +110,8 @@ interface IUsersFetchSuccessAction {
         total_pages: number,
     }
 }
-
 /**
- * Erroneous User fetch action type
+ * Erroneous Users fetch action type
  * */
 interface IUsersFetchErrorAction {
     type: UsersActionTypes.USERS_FETCH_ERROR;
@@ -87,9 +126,11 @@ interface IUsersSetPageAction {
 }
 
 /**
- * Declares User action type
+ * Declares Users action type
  * */
 export type IUsersAction = IUsersFetchAction
     | IUsersFetchSuccessAction
     | IUsersFetchErrorAction
     | IUsersSetPageAction;
+
+

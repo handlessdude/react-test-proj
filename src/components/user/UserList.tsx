@@ -1,21 +1,21 @@
 import React from 'react';
-import UserItem from "components/users/UserItem";
-import 'styles/UserStyles.css';
+import UserItem from "components/user/UserItem";
 import { IUsersProps} from "types/UserTypes";
 
 const UserList: React.FC<IUsersProps> = (props) => {
-
+    console.log(props.usersState)
     const pages = Array.from({length: props.usersState.total_pages},(v,k)=> k+1)
 
     if(props.usersState.loading) {
-        return <h1>Загрузка...</h1>
+        return <h3>Загрузка...</h3>
     }
 
     if(props.usersState.error) {
-        return <h1>{props.usersState.error}</h1>
+        return <h3>{props.usersState.error}</h3>
     }
 
-    const userItems = props.usersState.users.map(user => <UserItem user={user} key={user.id}/>)
+    const userItems = props.usersState.users.map(user => <UserItem user={user}
+                                                                   key={user.id}/>)
 
     return (
         <div className="users-list">

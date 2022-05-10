@@ -1,40 +1,36 @@
-import {IUsersState, IUser, UsersActionTypes, IUsersAction} from "types/UserTypes"
+import {IUser, IUserState,  UserActionTypes, IUserAction} from "types/UserTypes"
 
-const initialState: IUsersState = {
-    users: [] as IUser[],
-    loading: false,
+const initialState: IUserState = {
+    user: {
+        id: 1,
+        email: "",
+        first_name: "",
+        last_name:  "",
+        avatar: "",
+    } as IUser,
+    loading: true,
     error: null,
-    page: 1,
-    per_page: 6,
-    total_pages: 2,
 }
 
-export const userReducer = (state = initialState, action: IUsersAction): IUsersState => {
+export const userReducer = (state = initialState, action: IUserAction): IUserState => {
     switch (action.type) {
-        case UsersActionTypes.USERS_FETCH:
+        case UserActionTypes.USER_FETCH:
             return {
                 ...state,
                 loading: true
                 }
-        case UsersActionTypes.USERS_FETCH_SUCCESS:
+        case UserActionTypes.USER_FETCH_SUCCESS:
             return {
                 ...state,
-                users: action.payload.users,
-                per_page: action.payload.per_page,
-                total_pages: action.payload.total_pages,
+                user: action.payload.user,
                 loading: false,
                 }
-        case UsersActionTypes.USERS_FETCH_ERROR:
+        case UserActionTypes.USER_FETCH_ERROR:
             return {
                 ...state,
-                loading: false,
                 error: action.payload,
+                loading: false,
                 }
-        case UsersActionTypes.USERS_SET_PAGE:
-            return {
-                ...state,
-                page: action.payload
-            }
         default:
             return state
     }

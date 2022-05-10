@@ -3,14 +3,6 @@ import {IUserProps} from "types/UserTypes";
 import 'styles/UserStyles.css';
 import {Link} from "react-router-dom";
 
-/*
-* {"id":1,
-* "email":"george.bluth@reqres.in",
-* "first_name":"George",
-* "last_name":"Bluth",
-* "avatar":"https://reqres.in/img/faces/1-image.jpg"}
-* */
-
 const UserItem: React.FC<IUserProps> = (props) => {
     return (
         <Link to={`/users/${props.user.id}`} className="user-item card hoverable">

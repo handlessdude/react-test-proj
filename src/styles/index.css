@@ -18,6 +18,7 @@
   --rv-wrapper-padding:  20px;
   --preloader-wrapper-size: 80px;
   --round-borders-radius: 4px;
+  --circle-border-radius: 100px;
 }
 
 * {
@@ -61,15 +62,59 @@ body {
   margin: 1rem;
 }
 
-a.active{
-  color: var(--active-link);
-  cursor: default;
+.header--links > a:hover {
+  color: var(--gray);
+}
+
+.card {
+  border-radius: var(--round-borders-radius);
+  background: var(--white);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+section {
+  width: 100%;
 }
 
 main {
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .hoverable:hover{
   cursor: pointer;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.users-list--pagination{
+  display: flex;
+
+}
+
+.btn{
+  border-radius: 50px;
+  margin: 0.5rem;
+}
+/*====== a =======*/
+
+a:link {
+  color: var(--darkest-gray);
+}
+
+/* visited link */
+a:visited {
+  color: inherit;
+}
+
+/* mouse over link */
+a:hover {
+  color: var(--light-gray);
 }

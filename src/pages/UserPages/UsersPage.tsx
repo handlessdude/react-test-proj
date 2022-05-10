@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
-import UserList from "components/users/UserList";
+import UserList from "components/user/UserList";
 import {useTypedSelector} from "hooks/useTypedSelector";
 import {useActions} from "hooks/useActions";
 import {IUsersState} from "types/UserTypes";
 
 const UsersPage: React.FC = () => {
-    const usersState: IUsersState = useTypedSelector(state => state.userReducer)
+    const usersState: IUsersState = useTypedSelector(state => state.usersReducer)
 
     const {
         fetchUsers,

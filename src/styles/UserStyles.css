@@ -6,33 +6,32 @@
   --photo-size: 250px;
 }
 
+/*=========== user-item ===========*/
+
+.user-item{
+  display: flex;
+  width: 100%;
+  min-width: 420px;
+}
+
+.user-item--avatar{
+  border-radius: var(--round-borders-radius);
+}
+.user-item--info{
+  margin-left: 1.5rem;
+  width: 100%;
+}
+
+/*=========== user-list ===========*/
 
 .users-list{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.user-item{
-  display: flex;
-  width: 100%;
-  min-width: 420px;
-}
-.card {
-  border-radius: var(--round-borders-radius);
-  background: var(--white);
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-}
-.user-item--avatar{
-  border-radius: var(--round-borders-radius);
-}
-.user-item--info{
-  margin-left: 1.5rem;
-}
-section {
   width: 100%;
 }
+
 .users-list--pagination>button{
   padding: 0.8rem;
   border: none;
@@ -50,4 +49,41 @@ section {
   background: #eee!important;
   border-color: #ddd!important;
   color: #999!important;
+}
+
+/*=========== user-card ===========*/
+
+.user-card{
+  min-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.user-card--avatar{
+  border-radius: var(--circle-border-radius);
+}
+
+.user-info--grid{
+  display: grid;
+  grid-template: 40px 40px / 100px 0.2fr 50px 0.8fr;
+  column-gap: 4rem;
+}
+.gc{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.gc > h4 {
+  margin: 0;
+}
+.divider{
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: var(--light-gray);
 }
